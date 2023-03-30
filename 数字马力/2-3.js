@@ -1,5 +1,5 @@
 // 实现链式的加减乘除
-//（myCalculator(1).add(12).minus(3).multi(10).div(5).getValue() === 25）
+// （myCalculator(1).add(12).minus(3).multi(10).div(5).getValue() === 25）
 
 
 class myCalculator {

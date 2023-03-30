@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    {{mes}}
+    <button :disabled="disable1" @click="handle(1)">{{button1Msg}}</button>
+    <button :disabled="disable2" @click="handle(2)">{{button2Msg}}</button>
+  </div>
+</body>
+<script>
+  new Vue({
+    el: '#app',
+    data(){
+      return {
+        id: null,
+        mes: 5,
+        button1Msg: '抢购1',
+        button2Msg: '抢购2',
+        outMsg: '已抢购',
+        disable1: true,
+        disable2: true
+      }
+    },
+    mounted() {
+      this.id = setInterval((something) => {
+        console.log(something)
+        if (this.mes > 0) {
+          this.mes--
+        }
+        if (this.mes === 0) {
+          this.disable1 = false
+          this.disable2 = false
+        }
+      }, 1000,'123');
+    },
+    watch: {
+      mes: function(value) {
+        if (value === 0) {
+          clearInterval(this.id)
+        }
+      }
+    },
+    methods:{
+      handle(type) {
+        if (type === 1) {
+          this.disable1 = true
+          this.button1Msg = '已抢购'
+        }
+        if (type === 2) {
+          this.disable2 = true
+          this.button2Msg = '已抢购'
+        }
+      }
+    }
+  })
+</script>
+</html>
