@@ -1,3 +1,4 @@
 {
-  "liveServer.settings.port": 5502
+  "liveServer.settings.port": 5502,
+  "livePreview.defaultPreviewPath": "/interviewQuestions/2.bfc/1.html"
 }

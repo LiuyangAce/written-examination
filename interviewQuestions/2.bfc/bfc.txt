@@ -1,0 +1,13 @@
+bfc 块级格式化上下文 
+  它是页面中的一块渲染区域，并且有一套属于自己的渲染规则
+
+2. 触发条件：
+  OFDP
+  1. overflow 除了visible以外的 auto hidden
+  2. float：left/right
+  3. display：inline-block flex、inline-flex、grid、inline-grid
+  4. position: absolute、fixed
+
+3. 应用场景
+  1. margin重合问题
+  2. 
