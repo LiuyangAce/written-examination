@@ -9,5 +9,5 @@ bfc 块级格式化上下文
   4. position: absolute、fixed
 
 3. 应用场景
-  1. margin重合问题
-  2. 
+  1. margin重合问题 （塌陷、合并）
+  2. 浮动..
