@@ -1,0 +1,17 @@
+基本数据类型
+string number boolean symbol
+
+复杂
+object array function
+
+
+typeof 和 instanceof 区别
+
+  typeof 能准确的判断出基本数据类型，对于复杂数据类型 
+    function => function
+    Array\object => object
+  instanceof 通过判断是否在原型链上能否找到该类型的原型
+
+  
+
+  
