@@ -10,6 +10,8 @@ typeof 和 instanceof 区别
   typeof 能准确的判断出基本数据类型，对于复杂数据类型 
     function => function
     Array\object => object
+    NaN => NaN
+    null => Object
   instanceof 通过判断是否在原型链上能否找到该类型的原型
 
   
