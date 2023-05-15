@@ -1,3 +1,11 @@
+/**
+ * 把this当成xxx的一个元素
+ * 然后调用它 返回它的结果
+ * 最后把这个元素删掉
+ * @param {*} con 
+ * @returns 
+ */
+
 Function.prototype.myCall = function (con) {
   let arg = Array.from(arguments).splice(1)
   
