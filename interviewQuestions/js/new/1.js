@@ -1,12 +1,19 @@
-function Person(name, age){
-    this.name = name;
-    this.age = age;
-}
-Person.prototype.sayName = function () {
-    console.log(this.name)
-}
-const person1 = new Person('Tom', 20)
-console.log(person1)  // Person {name: "Tom", age: 20}
-person1.sayName() // 'Tom'
+function a (habit) {
+  this.name = 'a name'
 
-// 创建出来的实例 有原型上的属性
+  return {
+    habit
+  }
+}
+a.prototype.age = 12
+let obj = new a(123)
+
+console.log(obj.name);
+console.log(obj.age);
+console.log(obj.habit);
+// 如果构造函数返回一个对象那么结果如下
+// undefined
+// undefined
+// 123
+
+// console.log(obj.__proto__);
