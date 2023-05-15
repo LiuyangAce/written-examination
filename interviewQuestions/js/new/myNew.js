@@ -1,10 +1,20 @@
+// 总得来说 new干了这样两件件事情 
+// 1.把构造函数的prototype赋给new出来的原型 让new出来的实例能调用构造函数的属性
+// 2.this指向
+
 function objectFactory() {
   let obj = new Object()
 
+  // 获取传入的第一个参数，也就是构造函数
+  // shift改变原数组 这时候arguments被改变了
   let Constructor = [].shift.call(arguments)
 
+  // 构造函数的原型于obj的原型连接
+  // 这样的话 Constructor上的属性 在new出来的实例上能调用
   obj.__proto__ = Constructor.prototype
-  let result = Constructor.call(obj,arguments)
+
+  // 改变this指向
+  let result = Constructor.apply(obj,arguments)
 
   return typeof result === 'object' ? result : obj
 }
