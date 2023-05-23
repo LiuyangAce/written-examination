@@ -13,7 +13,8 @@ Function.prototype.myBind = function(cons) {
   var fBound = function() {
     var bindArgs = Array.prototype.slice.call(arguments, 0);
 
-    return self.apply( this instanceof fBound ?  1 : con, args.concat(bindArgs))
+    console.log(this);
+    return self.apply( this instanceof fBound ?  this : con, args.concat(bindArgs))
   }
 
   /**
