@@ -5,7 +5,7 @@
   3. 父：positon：relative
       子： position: absolute
             left: 50%
-            right: 50%
+            top: 50%
             transform: translate(-50%,-50%)
   4. 父：text-align: center
       子：display:inline-block
