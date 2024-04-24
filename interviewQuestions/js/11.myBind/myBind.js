@@ -13,7 +13,7 @@ Function.prototype.myBind = function(cons) {
   var fBound = function() {
     var bindArgs = Array.prototype.slice.call(arguments, 0);
 
-    console.log(this);
+    console.log(this, this instanceof fBound);
     return self.apply( this instanceof fBound ?  this : con, args.concat(bindArgs))
   }
 
@@ -41,9 +41,9 @@ var foo = {
 function bar(name, age) {
   this.habit = 'shopping';
 
-  console.log(this.value);
-  console.log(name);
-  console.log(age);
+  // console.log(this.value);
+  // console.log(name);
+  // console.log(age);
 }
 bar.prototype.friend = 'kevin';
 
@@ -53,7 +53,7 @@ var obj = new bindFoo('18');
 // undefined
 // daisy
 // 18
-console.log(obj.habit);
-console.log(obj.friend);
+// console.log(obj.habit);
+// console.log(obj.friend);
 // shopping
 // kevin
