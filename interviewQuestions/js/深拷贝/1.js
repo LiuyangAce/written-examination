@@ -1,3 +1,5 @@
+// 只考虑了对象和数组情况 后续补充
+
 function deepCopy(target, map = new WeakMap()) {
 
   if (typeof target === "object") {
