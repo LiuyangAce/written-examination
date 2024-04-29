@@ -38,7 +38,7 @@
 
     // 在数独棋盘中随机填入一些数字
     function fillBoardRandomly() {
-      for (let i = 0; i < 30; i++) { // 可以调整空白格的数量
+      for (let i = 0; i < 30; i++) { // 可以调整数量 一定程度上控制数独初始数字
         let row = Math.floor(Math.random() * 9);
         let col = Math.floor(Math.random() * 9);
         let num = Math.floor(Math.random() * 9) + 1;
@@ -48,36 +48,36 @@
       }
     }
 
-    // 解数独算法
-    function solveSudoku(row, col) {
-      if (row === 9) {
-        return true; // 所有行都已填充，返回解决方案成功
-      }
+    // // 解数独算法
+    // function solveSudoku(row, col) {
+    //   if (row === 9) {
+    //     return true; // 所有行都已填充，返回解决方案成功
+    //   }
 
-      // 计算下一行和下一列的索引
-      let nextRow = col === 8 ? row + 1 : row;
-      let nextCol = (col + 1) % 9;
+    //   // 计算下一行和下一列的索引
+    //   let nextRow = col === 8 ? row + 1 : row;
+    //   let nextCol = (col + 1) % 9;
 
-      // 如果当前位置已经有数字，则跳过
-      if (sudokuBoard[row][col] !== 0) {
-        return solveSudoku(nextRow, nextCol);
-      }
+    //   // 如果当前位置已经有数字，则跳过
+    //   if (sudokuBoard[row][col] !== 0) {
+    //     return solveSudoku(nextRow, nextCol);
+    //   }
 
-      // 尝试填充数字 1 到 9
-      for (let num = 1; num <= 9; num++) {
-        if (isValidMove(row, col, num)) {
-          sudokuBoard[row][col] = num; // 尝试填充数字
+    //   // 尝试填充数字 1 到 9
+    //   for (let num = 1; num <= 9; num++) {
+    //     if (isValidMove(row, col, num)) {
+    //       sudokuBoard[row][col] = num; // 尝试填充数字
 
-          if (solveSudoku(nextRow, nextCol)) {
-            return true; // 如果递归调用成功，返回解决方案成功
-          }
+    //       if (solveSudoku(nextRow, nextCol)) {
+    //         return true; // 如果递归调用成功，返回解决方案成功
+    //       }
 
-          sudokuBoard[row][col] = 0; // 如果递归调用失败，清除当前位置的数字
-        }
-      }
+    //       sudokuBoard[row][col] = 0; // 如果递归调用失败，清除当前位置的数字
+    //     }
+    //   }
 
-      return false; // 没有找到合适的数字，返回解决方案失败
-    }
+    //   return false; // 没有找到合适的数字，返回解决方案失败
+    // }
 
     // 检查在特定位置填入特定数字是否合法
     function isValidMove(row, col, num) {
