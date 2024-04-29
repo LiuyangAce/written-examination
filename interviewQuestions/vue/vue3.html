@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    let data = { name: 'ly', age: 123, add: { ad1: 'xx', ad2: 'yy' }, n: [0, 1, 2, 3] }
+
+    let handler = {
+      get(target, key) {
+        let temp = target[key]
+        if (typeof temp === 'object') {
+          return new Proxy(target[key], handler)
+        }
+        return temp
+      },
+      set(target, key, value) {
+        target[key] = value
+      }
+    }
+
+    function reactive(data) {
+      return new Proxy(data, handler)
+    }
+
+    reactive(data)
+    console.log(data.n);
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    // 处理数组
+    let newArrayProto = Object.create(Array.prototype);
+    let oldArrayProto = Array.prototype;
+    ['push', 'shift', 'unshift', 'pop', 'reverse', 'sort', 'splice'].forEach(method => {
+      newArrayProto[method] = function (...args) {
+        oldArrayProto[method].call(this,...args)
+      }
+    })
+
+    function Observer(target) {
+      if (typeof target !== 'object' || target === 'null') {
+        return data
+      }
+
+      if (Array.isArray(target)) {
+        target.__proto__ = newArrayProto
+      } else {
+        for (const key in target) {
+          defineReactive(target, key, target[key])
+        }
+      }
+
+
+    }
+
+    function defineReactive(target, key, value) {
+      Observer(value)
+
+      Object.defineProperty(target, key, {
+        get() {
+          // 记录对应的渲染过程watcher
+          return value
+        },
+        set(newVal) {
+          // 让记录的watcher执行
+          if (value !== newVal) {
+            value = newVal
+            Observer(newVal)
+          }
+        }
+      })
+    }
+
+    let data = { name: 'ly', age: 123, add: { ad1: 'xx', ad2: 'yy' }, n: [1, 2, 3, 4, 5] }
+    Observer(data);
+    console.log(data);
+    data.n.push('2', '3')
+    console.log(data);
+
+  </script>
+</body>
+
+</html>
